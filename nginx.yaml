@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: azure-vote-back
+  name: nginx
 spec:
   replicas: 1
   selector:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
+        image: "gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA"
         ports:
         - containerPort: 80
           name: nginx-port
