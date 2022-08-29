@@ -75,8 +75,8 @@ jobs:
     - name: kubectl - Google Cloud GKE cluster.
       uses: ameydev/gke-kubectl-action@master
       env:
-        PROJECT_ID: ${{ secrets.PROJECT_ID }}
-        APPLICATION_CREDENTIALS: ${{ secrets.GKE_PROJECT }}
+        PROJECT_ID: ${{ env.PROJECT_ID }}
+        APPLICATION_CREDENTIALS: ${{ secrets.GKE_SA_KEY }}
         CLUSTER_NAME: ${{ env.GKE_CLUSTER }}
         ZONE_NAME: ${{ env.GKE_ZONE }}
       with:
