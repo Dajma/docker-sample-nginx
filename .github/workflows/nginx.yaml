@@ -71,13 +71,12 @@ jobs:
 #         curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
 #         chmod u+x ./kustomize
 
+    - name: Setup kubectl
+      id: install-kubectl
+      uses: azure/setup-kubectl@v3
+
     # Deploy the Docker image to the GKE cluster
-    - name: kubectl - Google Cloud GKE cluster.
-      uses: ameydev/gke-kubectl-action@master
-      env:
-        PROJECT_ID: 'th-gcppoc-lab-e347'
-        APPLICATION_CREDENTIALS: ${{ secrets.GKE_SA_KEY }}
-        CLUSTER_NAME: ${{ env.GKE_CLUSTER }}
-        ZONE_NAME: ${{ env.GKE_ZONE }}
-      with:
-        args: apply -f nginx.yaml
+    - name: Deploy
+      run: |-
+          kubectl apply -f nginx.yaml
+          kubectl get services -o wide
