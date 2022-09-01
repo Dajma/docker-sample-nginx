@@ -58,5 +58,5 @@ jobs:
     # Create the name space
     - name: Create namespace
       run: |-
-          kubectl create namespace ${{ inputs.namesapce }}
+          kubectl create namespace ${{ inputs.namespace }}
           kubectl get ns
