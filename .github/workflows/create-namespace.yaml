@@ -1,11 +1,11 @@
-name: Build and Deploy to GKE Using VM
+name: Create Namespace
 
 on:
   workflow_dispatch:
       inputs:
-      namespace:
-        description: 'Kubernetes Namespace to be created'
-        required: true
+        namespace:
+          description: 'Kubernetes Namespace to be created'
+          required: true
 #   push:
 #     branches:
 #       - main
@@ -55,8 +55,8 @@ jobs:
       id: install-kubectl
       uses: azure/setup-kubectl@v3
 
-#     # Create the name space
-#     - name: Create namespace
-#       run: |-
-#           kubectl create namespace ${{ inputs.namesapce }}
-#           kubectl get ns
+    # Create the name space
+    - name: Create namespace
+      run: |-
+          kubectl create namespace ${{ inputs.namesapce }}
+          kubectl get ns
